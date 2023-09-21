@@ -1,0 +1,17 @@
+version: "3"
+services:
+  samba:
+    build: ./samba
+    tty: true
+    container_name: samba
+    environment:
+      - TZ=EST5EDT
+    ports:
+      - 139:139
+      - 445:445
+    command: '-s "Mount;/mnt" -s "priv;/priv;yes;no;no;admin" -s "pub;/pub;yes;no;no;all" -s "usr1;/usr1;yes;no;no;user1" -s "usr2;/usr2;yes;no;no;user2" -u "admin;admin" -u "user1;xpto" -u "user2;xpto" -p'
+    volumes:
+      - ./priv:/priv:z
+      - ./pub:/pub:z
+      - ./usr1:/usr2:z
+      - ./usr2:/usr2:z
