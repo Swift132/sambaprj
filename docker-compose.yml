@@ -1,18 +1,26 @@
 version: "3"
 services:
   samba:
-    build: ./samba
-    tty: true
+    build: ./samba            #Build from DockerFile
+    tty: true                 #To use interative mode
     container_name: samba
     environment:
-      - TZ=EST5EDT
+      - TZ=EST5EDT            #Time Zone
     ports:
       - 139:139
       - 445:445
-    command: '-u "admin;admin" -u "user1;xpto" -u "user2;xpto" -p'
-    volumes: 
+    command:                  #Users
+      -u "admin;admin"
+      -u "user1;xpto"
+      -u "user2;xpto"
+      -p
+
+    volumes:                  #Volumes
       - ./priv:/priv:z
       - ./pub:/pub:z
       - ./usr1:/usr1:z
       - ./usr2:/usr2:z
-      - ./cfg/samba/smb.conf:/etc/samba/smb.conf:ro
+      - ./cfg/samba/smb.conf:/etc/samba/smb.conf:ro #Cfg
+      
+    env_file:
+      - env.env
