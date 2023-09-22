@@ -1,1 +1,8 @@
-FROM dperson/samba
+FROM ubuntu:22.04
+
+RUN apt-get update && \
+    apt-get install -y samba && \
+    apt-get clean
+
+#COPY configure-samba.sh /usr/local/bin/
+#ENTRYPOINT ["configure-samba.sh"]
