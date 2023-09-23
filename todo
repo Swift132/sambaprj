@@ -1,3 +1,2 @@
-- Adicionar utilizadores;
-- Adicionar no samba;
-- DockerFile
+- Melhorar "configure-samba.sh", funções com variáveis para os userse pass;
+- Fazer a imagem docker no docker hub;
