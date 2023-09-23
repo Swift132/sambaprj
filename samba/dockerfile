@@ -1,8 +1,19 @@
 FROM ubuntu:22.04
+LABEL MAINTAINER="Diogo Pacheco <diogopacheco132@gmail.com>" 
 
 RUN apt-get update && \
-    apt-get install -y samba && \
+    apt-get install -y samba expect && \
     apt-get clean
 
-#COPY configure-samba.sh /usr/local/bin/
-#ENTRYPOINT ["configure-samba.sh"]
+COPY ./configure-samba.sh /usr/local/bin/
+
+#Adding users
+RUN useradd admin -p admin && \
+    useradd user1 -p user1 && \
+    useradd user2 -p user2
+
+#Entrypoint
+ENTRYPOINT [ "configure-samba.sh" ]
+
+#In case of running samba in foreground
+#CMD ["smbd", "--foreground", "--no-process-group"]
