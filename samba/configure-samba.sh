@@ -15,10 +15,10 @@
 #       CREATED: 23/09/2023 13:42
 #===============================================================================
 
-# Crie os usuários com senhas
+# Crie os utilizadores com senhas
 echo -e "admin\nadmin" | smbpasswd -s -a "admin"
 echo -e "user1\nuser1" | smbpasswd -s -a "user1"
 echo -e "user2\nuser2" | smbpasswd -s -a "user2"
 
-# Inicialize o serviço Samba
+# Iniciar o serviço Samba
 exec smbd --foreground --no-process-group
