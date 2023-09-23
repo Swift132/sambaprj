@@ -15,6 +15,6 @@ services:
       - ./usr1:/usr1:z
       - ./usr2:/usr2:z
       - ./cfg/samba/smb.conf:/etc/samba/smb.conf:ro #Cfg
-      
+    restart: unless-stopped #Restart policy becouse of entrypoint
     env_file:
       - env.env
