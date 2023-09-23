@@ -1,7 +1,7 @@
 version: "3"
 services:
   samba:
-    build: ./samba #Build from DockerFile
+    image: diogopacheco132/ubuntu-samba:22.04 #image in docker hub
     tty: true #To use interative mode
     container_name: samba
     environment:
