@@ -1,5 +1,19 @@
 #!/bin/bash
-
+#===============================================================================
+#          FILE: backup.sh
+#
+#         USAGE: ./backup.sh
+#
+#   DESCRIPTION: Script for backup of samba folders
+#
+#       OPTIONS: ---
+#  REQUIREMENTS: ---
+#          BUGS: ---
+#         NOTES: ---
+#        AUTHOR: Diogo Pacheco @Swift132 (diogopacheco@gmail.com),
+#  ORGANIZATION:
+#       CREATED: 23/09/2023 13:48
+#===============================================================================
 # Diretório de destino para o backup
 DESTINO=./backups
 
@@ -15,6 +29,7 @@ PASTAS=(
     ./usr2
 )
 
+# Function to check if the script is running as root
 verificar_sudo() {
     if [ "$EUID" -ne 0 ]; then
         printf "Este script requer privilégios SUDO. Execute o script com 'sudo'.\n"
@@ -22,8 +37,9 @@ verificar_sudo() {
     fi
 }
 
-verificar_sudo
+verificar_sudo #Use of sudo because the folders are owned by samba container
 
+# Remover o backup anterior
 if [ -f "$DESTINO/$NOME_BACKUP" ]; then
     rm "$DESTINO/$NOME_BACKUP"
 fi
