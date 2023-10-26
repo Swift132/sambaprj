@@ -1,2 +1,3 @@
-- Melhorar "configure-samba.sh", funções com variáveis para os userse pass;
+- Melhorar "configure-samba.sh", funções com variáveis para os users e pass;
 - Fazer a imagem docker no docker hub;
+- Fazer , mkdir -p do array no backup.sh;
