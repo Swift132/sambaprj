@@ -19,7 +19,7 @@
 
 # Create a function to create users, witch accepts a password as argument
 create_users() {
-    echo -e "$1\n$1" | smbpasswd -s -a "$2"
+    echo -e "$1\n$2" | smbpasswd -s -a "$1"
 }
 
 # Invoke the function to create users
