@@ -30,14 +30,7 @@ PASTAS=(
 )
 
 # Function to check if the script is running as root
-verificar_sudo() {
-    if [ "$EUID" -ne 0 ]; then
-        printf "Este script requer privilégios SUDO. Execute o script com 'sudo'.\n"
-        exit 1
-    fi
-}
-
-verificar_sudo #Use of sudo because the folders are owned by samba container
+mkdir -p "${PASTAS[@]}"
 
 # Remover o backup anterior
 if [ -f "$DESTINO/$NOME_BACKUP" ]; then
