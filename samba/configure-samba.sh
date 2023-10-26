@@ -15,10 +15,17 @@
 #       CREATED: 23/09/2023 13:42
 #===============================================================================
 
-# Crie os utilizadores com senhas
-echo -e "admin\nadmin" | smbpasswd -s -a "admin"
-echo -e "user1\nuser1" | smbpasswd -s -a "user1"
-echo -e "user2\nuser2" | smbpasswd -s -a "user2"
+#TODO: Create a function create users
+
+# Create a function to create users, witch accepts a password as argument
+create_users() {
+    echo -e "$1\n$1" | smbpasswd -s -a "$2"
+}
+
+# Invoke the function to create users
+create_users "admin" "admin"
+create_users "user1" "user1"
+create_users "user2" "user2"
 
 # Iniciar o serviço Samba
 exec smbd --foreground --no-process-group
